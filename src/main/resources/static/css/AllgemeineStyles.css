@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #002d49;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+header p {
+    font-family: "Bangla MN", serif;
+    font-size: 50px;
+    margin: 20px auto auto;
+    text-align: justify-all;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    padding-top: 70px;
+}
+
+.mainContainer h1 {
+    color: #004c7c;
+    margin: auto;
+}
+
+.mainContainer {
+    justify-content: center;
+    padding: 10%;
+}
+
+footer {
+    background-color: #002d49;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    position: page;
+}
+
+footer nav {
+    justify-content: center;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+
+}
+
+nav img {
+    height: 60px;
+}
+
+.emptyContainer {
+    height: 80px;
+}

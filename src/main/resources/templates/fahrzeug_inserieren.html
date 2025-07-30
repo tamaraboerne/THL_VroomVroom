@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/AllgemeineStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/fahrzeug_inserieren.css">
+    <script src="js/inserieren.js" defer></script>
+    <title>Fahrzeug inserieren</title>
+</head>
+<body>
+<!-- Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <a href="/Startseite"> <img src="assets/logo.png" alt="Logo"></a>
+        <p>VroomVroom</p>
+        <div th:if="${username != null}">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </nav>
+</header>
+
+<!-- Forms -->
+<div>
+    <!-- Zurückbutton -->
+    <a href="/Startseite">
+        <div class="col text-start backButton">
+            <button type="button" class="btn btn-warning">Zurück</button>
+        </div>
+    </a>
+    <form th:object="${fahrzeugSave}" th:action="@{fahrzeug_inserieren}" action="#" method="post">
+    <!-- Oberer Formularrahmen -->
+    <div class="formFrame" id="topFormFrame">
+        <div class="form">
+            <h2>Fahrzeugdetails</h2>
+            <div class="row row-cols-auto">
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Fahrzeugmarke</h5>
+                        <input type="text" th:field="*{marke}" id="markInput" maxlength="30" class="form-control" onblur="validateStrNotEmpty('markInput', 'markError', 'Feld ist leer!')">
+                        <span id="markError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <!-- JS implementieren -->
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Fahrzeugmodell</h5>
+                        <input type="text" th:field="*{modell}" id="modellInput" maxlength="30" class="form-control" onblur="validateStrNotEmpty('modellInput', 'modellError', 'Feld ist leer!')">
+                        <span id="modellError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <!-- JS implementieren -->
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Fahrzeugkategorie</h5>
+                        <select type="text" th:field="*{kategorie}" id="kategorieInput" class="form-control">
+                            <option value="Null"></option>
+                            <option value="Elektro">Elektro</option>
+                            <option value="Limousine">Limousine</option>
+                            <option value="Cabrio">Cabrio</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Kombi">Kombi</option>
+                            <option value="Kleinbus">Kleinbus</option>
+                            <option value="Geländewagen">Geländewagen</option>
+                            <option value="Luxus">Luxus</option>
+                        </select>
+                        <span id="kategorieError" class="error-message"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Leistungsdaten</h5>
+                        <input type="text" th:field="*{leistung}" id="leistungInput" class="form-control" onblur="handleBlurLeistung('leistungInput', 'leistungError', 'Feld ist leer!')">
+                        <span id="leistungError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <!-- JS implementieren -->
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Treibstoffart</h5>
+                        <select type="text" th:field="*{treibstoffart}" id="treibstoffInput"  class="form-control">
+                            <option value="Null"></option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Benzin">Benzin</option>
+                            <option value="Superbenzin">Superbenzin</option>
+                            <option value="Strom">Strom</option>
+                        </select>
+                        <span id="treibstoffError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <!-- JS implementieren -->
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Anzahl der Sitze</h5>
+                        <input type="text" th:field="*{sitze}" id="sitzeInput" class="form-control" onblur="validateStrNotEmpty('sitzeInput', 'sitzeError', 'Feld ist leer!')">
+                        <span id="sitzeError" class="error-message"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Getriebeart</h5>
+                        <select type="text" th:field="*{getriebeart}" id="getInput" class="form-control">
+                            <option value="Null"></option>
+                            <option value="automatik">Automatik</option>
+                            <option value="schaltgetriebe">Schaltgetriebe</option>
+                        </select>
+                        <span id="getError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <!-- JS implementieren -->
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Tagespreis</h5>
+                        <input type="text" th:field="*{tagespreis}" id="preisInput" class="form-control" onblur="validateStrNotEmpty('preisInput', 'preisError', 'Feld ist leer!')">
+                        <span id="preisError" class="error-message"></span>
+                    </div>
+                </div>
+                <button type="submit" id="validateButton" class="btn btn-warning btn-lg">Fahrzeug inserieren</button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <!-- Unterer Formularrahmen -->
+    <div class="formFrame" id="bottomFormFrame">
+        <div class="form">
+            <h2>Abholstandort</h2>
+            <form th:object="${abholungStandortSave}" th:action="@{fahrzeug_inserieren}" action="#" method="post">
+            <div class="row row-cols-auto">
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Straße</h5>
+                        <input th:field="*{strasse}" type="text" id="strInput" class="form-control" onblur="validateStrNotEmpty('strInput', 'strError', 'Feld ist leer!')">
+                        <span id="strError" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Hausnummer</h5>
+                        <input th:field="*{hausnummer}" type="text" id="hnInput" maxlength="7" class="form-control" onblur="validateStrNotEmpty('hnInput', 'hnError', 'Feld ist leer!')">
+                        <span id="hnError" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>PLZ</h5>
+                        <input type="text" th:field="*{plz}" id="plzInput" maxlength="5" class="form-control" onblur="validatePLZ('plzInput', 'plzError', 'Ungültige Postleitzahl!', 13)">
+                        <span id="plzError" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Ort</h5>
+                        <input type="text" th:field="*{ort}" id="ortInput" class="form-control" onblur="validateStrNotEmpty('ortInput', 'ortError', 'Feld ist leer!')">
+                        <span id="ortError" class="error-message"></span>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form th:object="${rueckgabeStandortSave}" th:action="@{fahrzeug_inserieren}" action="#" method="post" >
+            <h2>Rückgabestandort</h2>
+            <div class="row">
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Straße</h5>
+                        <input th:field="*{strasse}" type="text" id="strInput2" class="form-control" onblur="validateStrNotEmpty('strInput2', 'strError2', 'Feld ist leer!')">
+                        <span id="strError2" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Hausnummer</h5>
+                        <input th:field="*{hausnummer}" type="text" id="hnInput2" maxlength="7" class="form-control" onblur="validateStrNotEmpty('hnInput2', 'hnError2', 'Feld ist leer!')">
+                        <span id="hnError2" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>PLZ</h5>
+                        <input th:field="*{plz}" type="text" id="plzInput2" maxlength="5" class="form-control" onblur="validatePLZ('plzInput2', 'plzError2', 'Ungültige Postleitzahl!', 14)">
+                        <span id="plzError2" class="error-message"></span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="input">
+                        <h5>Ort</h5>
+                        <input th:field="*{ort}" type="text" id="ortInput2" class="form-control" onblur="validateStrNotEmpty('ortInput2', 'ortError2', 'Feld ist leer!')">
+                        <span id="ortError2" class="error-message"></span>
+                    </div>
+                </div>
+
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- File input and button -->
+    <div class="uploadFrame">
+        <div class="upload">
+            <div class="row">
+                <h2>Bild hochladen</h2>
+                <div class="col">
+                    <input class="form-control form-control-lg" id="formFileLg" type="file">
+                </div>
+            </div>
+        </div>
+        <div class="col text-end inserierenButton">
+            <a href="javascript:void(0)"> <!-- zum teste id geändert -->
+                <button type="submit" id="validateButtonChange" class="btn btn-warning btn-lg" onclick="validateAndSubmit('validateButton')">Fahrzeug inserieren</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <nav class="navbar navbar-expand-lg footer">
+        <a class="navbar-brand text-white" href="/impressum">Impressum</a>
+        <a class="navbar-brand text-white" href="/datenschutz">Datenschutz</a>
+    </nav>
+</footer>
+<script>
+
+    function validateForm() {
+        // Hier füge die Überprüfung für jedes Feld ein
+        // Beispiel: Überprüfung für Fahrzeugmarke
+        var markeInput = document.getElementById('markInput').value;
+        if (markeInput.trim() === '') {
+            alert('Fahrzeugmarke darf nicht leer sein!');
+            return false;
+        }
+
+        // Füge weitere Überprüfungen für andere Felder hinzu...
+
+        return true; // Wenn alle Überprüfungen bestanden wurden
+    }
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

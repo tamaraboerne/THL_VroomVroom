@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/AllgemeineStyles.css">
+    <title>Admin Login Maske</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/Startseite"> <img src="assets/logo.png" alt="Logo"></a>
+        <p>VroomVroom</p>
+    </nav>
+</header>
+
+<main>
+    <div class="loginMaske">
+        <form th:action="@{/login}" method="post">
+            <h2>Admin Login</h2>
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Anmelden</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <nav>
+        <a href="/datenschutz">Datenschutz</a>
+        <a href="/impressum">Impressum</a>
+    </nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body {
+    background-color: #F5F7F8;
+}
+
+.navbar-brand {
+    font-size: 100%;
+}
+
+.form {
+    text-align: left;
+    background-color: white;
+    margin-top: -2%;
+    margin-bottom: -1%;
+}
+
+.form h2 {
+    margin-top: 15px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.form h5 {
+    font-size: 15px;
+}
+
+.formFrame {
+    padding: 3%;
+    background-color: white;
+    display: block;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#topFormFrame {
+    margin-bottom: 2%;
+}
+
+.backButton {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.backButton button {
+    color: white;
+    background-color: #002d49;
+    border: #ffe500;
+}
+
+.backButton button:hover {
+    background-color: #004c7c;
+}
+
+.buchenButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.buchenButton button {
+    color: white;
+    background-color: #002d49;
+    border: #ffe500;
+}
+
+.buchenButton button:hover {
+    background-color: #004c7c;
+}
+
+.row {
+    padding-bottom: 1%;
+}
+
+.frame {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+

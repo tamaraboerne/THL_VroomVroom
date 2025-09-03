@@ -1,0 +1,115 @@
+
+
+car-details-container {
+    margin-bottom: 10rem;
+
+}
+
+.car-details {
+    display: flex;
+    margin-left: 3%;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+}
+
+
+.boarder {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    height: fit-content;
+    margin: 50px;
+    box-shadow: 3px 3px 3px gray;
+}
+
+.car-info {
+    background-color: white;
+    text-align: left;
+    padding-right: 20px;
+    box-sizing: border-box;
+    width: 50%;
+    max-width: 700px;
+    position: relative;
+}
+
+.car-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+main img {
+    width: 100%;
+    height: auto;
+}
+
+.price-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.vertical-line {
+    border-left: 1px solid #ccc;
+    margin: 0 20px;
+}
+
+.backButton {
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.backButton button {
+    color: white;
+    background-color: #002d49;
+    border: #ffe500;
+}
+
+.backButton button:hover {
+    background-color: #004c7c;
+}
+
+.price-button-container button {
+    color: white;
+    background-color: #002d49;
+    border: #ffe500;
+}
+
+.price-button-container button:hover {
+    background-color: #004c7c;
+}
+
+.car-specs {
+    font-size: 20px;
+    flex: 2;
+    display: flex;
+    justify-content: end;
+}
+
+ /*  "> div"  wählt nur direkte Kinder im <div> aus*/
+.left-specs > div, .right-specs > div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.horizontal-line {
+    border-bottom: 1px solid #ccc;
+}
+
+.bold-text {
+    font-weight: bold;
+}
